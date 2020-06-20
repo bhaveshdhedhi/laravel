@@ -22,3 +22,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/indexajax', 'HomeController@indexAjax')->name('indexajax');
+
+Route::get('/sendrequest', 'HomeController@sendRequest')->name('sendrequest');
+
+Route::get('/blockuser', 'HomeController@blockUser')->name('blockuser');
+
+Route::get('/acceptrequest', 'HomeController@acceptRequest')->name('acceptrequest');

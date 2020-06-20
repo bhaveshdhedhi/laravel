@@ -59,8 +59,7 @@
 $(document).ready(function(){
     loadUsers();    
     // First Time Click Button and show the users without no filter
-    $("#submit_btn").trigger('click');
-    
+    $("#submit_btn").trigger('click'); 
 });
 
 function loadUsers(){
