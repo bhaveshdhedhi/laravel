@@ -1,4 +1,28 @@
-# laravel
+# Steps to check functionality
+
+1. Login With 
+ User - bhaveshnpatel007@gmaail.com
+ Password - 12345678 (All Users Password is 12345678)
+ 
+ 2. User Registratyion with name, email, Gender,Hobbies , password and confirm password.
+ 
+ 3. After login user listing without logged in user.
+ 
+ 4. User filter by Gender and Hobbies.
+ 
+ 5. User can send friend request, accept request, block user.
+ 
+ 6. if request sent then display Request Sent
+ 
+ 7. if request accepted by any user then it display Your friend
+ 
+ 8.if user blocked then display as blocked.
+ 
+ 9. if blocked user logging then it will no show blogged by user in list.
+ 
+ 
+
+# laravel task
 Task: Connection management system
 
 
