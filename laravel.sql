@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 19, 2020 at 01:10 PM
+-- Generation Time: Jun 20, 2020 at 11:54 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.4
 
@@ -35,6 +35,31 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `friends`
+--
+
+CREATE TABLE `friends` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `friend_id` int(10) UNSIGNED NOT NULL,
+  `status` enum('sent','accepted','blocked') COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `friends`
+--
+
+INSERT INTO `friends` (`id`, `user_id`, `friend_id`, `status`) VALUES
+(1, 1, 10, 'accepted'),
+(2, 1, 9, 'blocked'),
+(3, 1, 8, 'sent'),
+(4, 10, 9, 'blocked'),
+(5, 7, 1, 'sent'),
+(6, 1, 3, 'sent');
 
 -- --------------------------------------------------------
 
@@ -79,7 +104,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2020_06_17_043909_create_hobbies_table', 2),
-(5, '2020_06_17_044903_create_users_hobbies_table', 2);
+(5, '2020_06_17_044903_create_users_hobbies_table', 2),
+(6, '2020_06_19_123546_create_friends_table', 3);
 
 -- --------------------------------------------------------
 
@@ -116,16 +142,16 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `gender`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Bhavesh Dhedhi', 'bhaveshnpatel007@gmail.com', 'male', NULL, '$2y$10$l9hPrkQFdi8ZAcj.D1NM4OpwIU/PeNseFlzfJcLGfvpCqlLt3TaB.', NULL, '2020-06-16 23:57:42', '2020-06-16 23:57:42'),
-(2, 'Shilpa Gosara', 'shilpa@gmail.com', 'female', NULL, '$2y$10$ZnnCGMZ0zTEEUL9t3OGfJ.6rZQmndqU2/zOxyvHRThHP5dz5gULiS', NULL, '2020-06-17 01:15:50', '2020-06-17 01:15:50'),
-(3, 'Vishruti Dhedhi', 'vishruti@gmail.com', 'female', NULL, '$2y$10$z6hENk0NlQ7gNbFDgS1QCeZaKDk3KKvFlqLkMX.hNlp3pKjOlc42S', NULL, '2020-06-17 01:17:26', '2020-06-17 01:17:26'),
-(4, 'test', 'test@gmail.com', 'male', NULL, '$2y$10$UEPctcK8KPivLEuOxkmUi.4D1v7Ae0l0g2KrA3MXzkWcJ7qN680uq', NULL, '2020-06-17 01:23:18', '2020-06-17 01:23:18'),
-(5, 'test', 'test1@gmail.com', 'male', NULL, '$2y$10$8uEsz2Mt.UsaRDv.wou/tuYJ4/mMTPDglEFoVc6ZOlmfsjv8Ll57a', NULL, '2020-06-17 01:24:30', '2020-06-17 01:24:30'),
-(6, 'sadfm', 'ddhfv@gmail.com', 'female', NULL, '$2y$10$xgfFqGqHnfr.M6DIrIsjY.sCMuQVgHi1w5ayxPkDI0KuAFFFXQzQy', NULL, '2020-06-17 01:25:21', '2020-06-17 01:25:21'),
-(7, 'bhavesh', 'vdfh@gmail.com', 'male', NULL, '$2y$10$blkKZ7n8XDJQT0Nk25/m1OlXTWMduaDmedfuIzPJ743hsf8HeVFyG', NULL, '2020-06-17 06:51:12', '2020-06-17 06:51:12'),
-(8, 'adshj', 'asfdjh@gmail.com', 'male', NULL, '$2y$10$/oChOMjG5Jp3518v5e2rwexh5XOS8N2W2o2T33QjZ7GFuXrechbR6', NULL, '2020-06-17 06:58:32', '2020-06-17 06:58:32'),
-(9, 'adshj', 'asfdjh1@gmail.com', 'female', NULL, '$2y$10$MCl4nW6VLCnZBvUSbb3XuOjlInGuSQRgJkDBxtHA.Aul81C34dFHC', NULL, '2020-06-17 07:01:45', '2020-06-17 07:01:45'),
-(10, 'Ranjan', 'ranjan@gmail.com', 'female', NULL, '$2y$10$.sx6Ybp8wU13sHJzazl.IuPNvwWGRZ7FCh4uTpvGKm9LJ1bOeXM4e', NULL, '2020-06-19 00:55:57', '2020-06-19 00:55:57');
+(1, 'Bhavesh Dhedhi', 'bhaveshnpatel007@gmail.com', 'male', NULL, '$2y$10$l9hPrkQFdi8ZAcj.D1NM4OpwIU/PeNseFlzfJcLGfvpCqlLt3TaB.', 'KM3THfkjn6JYaBjIQCuXrhzTS8YJhOQzfWvswFT62Joj1HV5t21kK1T49IyM', '2020-06-16 23:57:42', '2020-06-16 23:57:42'),
+(2, 'Shilpa Gosara', 'shilpa@gmail.com', 'female', NULL, '$2y$10$l9hPrkQFdi8ZAcj.D1NM4OpwIU/PeNseFlzfJcLGfvpCqlLt3TaB.', NULL, '2020-06-17 01:15:50', '2020-06-17 01:15:50'),
+(3, 'Vishruti Dhedhi', 'vishruti@gmail.com', 'female', NULL, '$2y$10$l9hPrkQFdi8ZAcj.D1NM4OpwIU/PeNseFlzfJcLGfvpCqlLt3TaB.', NULL, '2020-06-17 01:17:26', '2020-06-17 01:17:26'),
+(4, 'Jayesh Patel', 'jayesh@gmail.com', 'male', NULL, '$2y$10$l9hPrkQFdi8ZAcj.D1NM4OpwIU/PeNseFlzfJcLGfvpCqlLt3TaB.', NULL, '2020-06-17 01:23:18', '2020-06-17 01:23:18'),
+(5, 'Granth Bhagiya', 'granth@gmail.com', 'male', NULL, '$2y$10$l9hPrkQFdi8ZAcj.D1NM4OpwIU/PeNseFlzfJcLGfvpCqlLt3TaB.', NULL, '2020-06-17 01:24:30', '2020-06-17 01:24:30'),
+(6, 'Nikhil Ujariya', 'nikhil@gmail.com', 'male', NULL, '$2y$10$l9hPrkQFdi8ZAcj.D1NM4OpwIU/PeNseFlzfJcLGfvpCqlLt3TaB.', NULL, '2020-06-17 01:25:21', '2020-06-17 01:25:21'),
+(7, 'Raj Mehta', 'raj@gmail.com', 'male', NULL, '$2y$10$l9hPrkQFdi8ZAcj.D1NM4OpwIU/PeNseFlzfJcLGfvpCqlLt3TaB.', NULL, '2020-06-17 06:51:12', '2020-06-17 06:51:12'),
+(8, 'Rakesh Johi', 'rakesh@gmail.com', 'male', NULL, '$2y$10$l9hPrkQFdi8ZAcj.D1NM4OpwIU/PeNseFlzfJcLGfvpCqlLt3TaB.', NULL, '2020-06-17 06:58:32', '2020-06-17 06:58:32'),
+(9, 'Jitendra Paneliya', 'jitendrap@gmail.com', 'male', NULL, '$2y$10$l9hPrkQFdi8ZAcj.D1NM4OpwIU/PeNseFlzfJcLGfvpCqlLt3TaB.', NULL, '2020-06-17 07:01:45', '2020-06-17 07:01:45'),
+(10, 'Ranjan Bhagiya', 'ranjan@gmail.com', 'female', NULL, '$2y$10$l9hPrkQFdi8ZAcj.D1NM4OpwIU/PeNseFlzfJcLGfvpCqlLt3TaB.', NULL, '2020-06-19 00:55:57', '2020-06-19 00:55:57');
 
 -- --------------------------------------------------------
 
@@ -153,7 +179,13 @@ INSERT INTO `users_hobbies` (`id`, `user_id`, `hobby_id`) VALUES
 (7, 9, 3),
 (8, 9, 4),
 (9, 9, 5),
-(10, 10, 5);
+(10, 10, 5),
+(11, 1, 3),
+(12, 2, 5),
+(13, 4, 3),
+(14, 6, 2),
+(15, 5, 2),
+(16, 3, 1);
 
 --
 -- Indexes for dumped tables
@@ -164,6 +196,14 @@ INSERT INTO `users_hobbies` (`id`, `user_id`, `hobby_id`) VALUES
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `friends`
+--
+ALTER TABLE `friends`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `friends_friend_id_index` (`friend_id`),
+  ADD KEY `friends_user_id_index` (`user_id`);
 
 --
 -- Indexes for table `hobbies`
@@ -209,6 +249,12 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `friends`
+--
+ALTER TABLE `friends`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `hobbies`
 --
 ALTER TABLE `hobbies`
@@ -218,7 +264,7 @@ ALTER TABLE `hobbies`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -230,11 +276,18 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users_hobbies`
 --
 ALTER TABLE `users_hobbies`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `friends`
+--
+ALTER TABLE `friends`
+  ADD CONSTRAINT `friends_friend_id_foreign` FOREIGN KEY (`friend_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `friends_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `users_hobbies`
